@@ -1,39 +1,29 @@
 package com.afterverse.api.routes
 
-import com.afterverse.api.configuration.Configuration
+import com.afterverse.api.configuration.Configuration.profileService
 import dto.ProfileDTO
 import io.ktor.application.*
-import io.ktor.features.*
 import io.ktor.http.*
-import io.ktor.jackson.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
 fun Route.profileRoute() {
-    install(ContentNegotiation) {
-        jackson()
-    }
 
-    route("profiles"){
-        post("/create") {
+    route("profile") {
+        post("create") {
 
-            var profileRequest = call.receive<ProfileDTO>()
-
-
-            Configuration.profileService.createProfile.excute(profileRequest)
-
+            val profileRequest = call.receive<ProfileDTO>()
+            profileService.create(profileRequest)
             call.respond(HttpStatusCode.Created, profileRequest)
-
         }
 
-        get("{userid}"){
+        get("{userid}") {
             val userId = call.parameters["userid"]
-
-            var profile = Configuration.profileService.findById.executeFindById(userId.toString())
-            if (profile != null){
+            val profile = profileService.findById(userId.toString())
+            if (profile != null) {
                 call.respond(HttpStatusCode.OK, profile)
-            } else{
+            } else {
                 call.respond(HttpStatusCode.NotFound, "Profile not found")
             }
 

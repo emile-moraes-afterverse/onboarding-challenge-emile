@@ -15,7 +15,7 @@ import java.util.*
 
 
 class DynamoDBProfileApplicationDAO(config: Config, private val dynamoDB: DynamoDbAsyncClient): ProfileApplicationDAO {
-    private val tableName = config.getString("afterverse.profile.table-name")
+    private val tableName = config.getString("com.afterverse.api.dynamodb.onboarding-application.profile-table-name")
 
     override suspend fun create(profile: Profile) {
 
@@ -55,7 +55,7 @@ class DynamoDBProfileApplicationDAO(config: Config, private val dynamoDB: Dynamo
             userId = this["id"]?.s().toString(),
             nickname = this["nickname"]?.s().toString(),
             region = Region.valueOf(this["region"]?.s().toString()),
-            wallet = Wallet.Default
+            wallet = Wallet.DEFAULT
         )
     }
 }

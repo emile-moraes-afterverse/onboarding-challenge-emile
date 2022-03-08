@@ -1,11 +1,11 @@
 package model
 
 data class Wallet(
-    var coins: Int = 0,
-    var gems: Int = 0
-){
-    companion object{
-        val Default = Wallet(coins = 100, gems = 100)
+    val coins: Int = 0,
+    val gems: Int = 0
+) {
+    companion object {
+        val DEFAULT = Wallet(coins = 100, gems = 100)
     }
 }
 

@@ -10,7 +10,7 @@ import io.ktor.server.netty.*
 
 class Server(val port: Int) {
 
-  private val engine = embeddedServer(Netty, this.port) {
+  private val engine = embeddedServer(Netty, port) {
     routing {
       install(CORS) {
         anyHost()

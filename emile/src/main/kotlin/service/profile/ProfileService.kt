@@ -6,10 +6,10 @@ import model.Wallet
 import persistence.ProfileApplicationDAO
 import java.util.*
 
-class CreateProfile(private val profileDAO : ProfileApplicationDAO) {
+class ProfileService(private val profileDAO : ProfileApplicationDAO) {
 
 
-    suspend fun excute(request: ProfileDTO) {
+    suspend fun create(request: ProfileDTO) {
 
         val id = UUID.randomUUID().toString()
 
@@ -17,10 +17,12 @@ class CreateProfile(private val profileDAO : ProfileApplicationDAO) {
             userId = id,
             nickname = request.nickname,
             region = request.region,
-            wallet = Wallet.Default
+            wallet = Wallet.DEFAULT
         )
 
 
         this.profileDAO.create(profile)
     }
+
+    suspend fun findById(userId: String): Profile? = profileDAO.findById(userId)
 }
