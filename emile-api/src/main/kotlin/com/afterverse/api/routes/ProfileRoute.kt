@@ -12,21 +12,35 @@ fun Route.profileRoute() {
 
     route("profile") {
         post("create") {
+            try {
+                val profileRequest = call.receive<ProfileDTO>()
+                profileService.create(profileRequest)
+                call.respond(HttpStatusCode.Created, profileRequest)
+            } catch (e : java.lang.Exception) {
+                println(e)
+            }
 
-            val profileRequest = call.receive<ProfileDTO>()
-            profileService.create(profileRequest)
-            call.respond(HttpStatusCode.Created, profileRequest)
         }
 
         get("{userid}") {
-            val userId = call.parameters["userid"]
-            val profile = profileService.findById(userId.toString())
-            if (profile != null) {
-                call.respond(HttpStatusCode.OK, profile)
-            } else {
-                call.respond(HttpStatusCode.NotFound, "Profile not found")
-            }
+            try {
+                val userId = call.parameters["userid"]
+                val profile = userId?.let { it1 -> profileService.findById(it1) }
+                if (profile != null) {
+                    call.respond(HttpStatusCode.OK, profile)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Profile not found")
+                }
+            } catch (e : java.lang.Exception) {
+            println(e)
+        }
 
+
+
+        }
+
+        get("/") {
+            call.respondText("Ok aqui!")
         }
     }
 }

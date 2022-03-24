@@ -1,6 +1,6 @@
 package model.enums
 
-enum class Region(val value: String) {
+enum class RegionType(val valueRegion: String) {
 
     AMERICA_SUL("America do sul"),
     AMERICA_CENTRAL("America Central"),
