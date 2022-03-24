@@ -15,10 +15,14 @@ dependencies {
     implementation "io.ktor:ktor-server-netty:${ktor_version}"
     api "software.amazon.awssdk:netty-nio-client:$awsSDK2Version"
     api "io.ktor:ktor-auth:$ktor_version"
-    api "io.ktor:ktor-jackson:$ktor_version"
+    implementation "io.ktor:ktor-jackson:$ktor_version"
     implementation project(":emile")
     implementation project(":emile-dynamoDB")
     implementation 'org.testng:testng:7.1.0'
-
-
+    implementation("io.ktor:ktor-serialization:$ktor_version")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-afterburner:2.13.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:2.4.1")
+    implementation "io.vavr:vavr:$vavrVersion"
 }
