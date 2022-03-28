@@ -19,5 +19,5 @@ object Configuration {
     private val packagDAO = DynamoStoreApplicationDAO(config)
     val packagService = PackageService(packagDAO)
 
-    val server = Server(8080)
+    val server = Server(8000)
 }

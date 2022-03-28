@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.afterverse.config
 
 import com.github.dockerjava.api.model.PortBinding

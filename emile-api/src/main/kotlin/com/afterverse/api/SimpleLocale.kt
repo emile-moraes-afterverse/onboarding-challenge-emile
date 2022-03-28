@@ -2,8 +2,8 @@ package com.afterverse.api
 
 class SimpleLocale(language: String, country: String? = null) {
 
-    val language = language.toLowerCase()
-    val country = country?.toUpperCase()
+    val language = language
+    val country = country
 
     override fun toString() =
         buildString {
