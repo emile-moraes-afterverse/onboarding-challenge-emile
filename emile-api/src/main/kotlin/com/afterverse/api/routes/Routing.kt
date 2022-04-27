@@ -5,4 +5,5 @@ import io.ktor.routing.*
 fun Routing.myRoutes() {
     profileRoute()
     storeRoute()
+    purchaseinformation()
 }

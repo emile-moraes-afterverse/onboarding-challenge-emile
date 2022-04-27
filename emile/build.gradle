@@ -11,4 +11,8 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'junit:junit:4.13.2'
+
+    testImplementation("org.mockito:mockito-all:2.0.2-beta")
+
 }

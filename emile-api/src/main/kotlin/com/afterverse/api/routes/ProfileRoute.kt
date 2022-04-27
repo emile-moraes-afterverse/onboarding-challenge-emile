@@ -33,14 +33,7 @@ fun Route.profileRoute() {
                 }
             } catch (e : java.lang.Exception) {
             println(e)
-        }
-
-
-
-        }
-
-        get("/") {
-            call.respondText("Ok aqui!")
+            }
         }
     }
 }

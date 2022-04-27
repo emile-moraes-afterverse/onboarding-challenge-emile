@@ -23,6 +23,7 @@ class DynamoStoreApplicationDAO (config: Config) : StoreApplicationDAO {
         addItem["item"] = AttributeValue.builder().s(item.item).build()
         addItem["coins"] = AttributeValue.builder().n(item.coins.toString()).build()
         addItem["gems"] = AttributeValue.builder().n(item.gems.toString()).build()
+        addItem["location"] = AttributeValue.builder().s(item.location).build()
         addItem["createdAt"] = AttributeValue.builder().s(item.createdAt.toString()).build()
         val putItemRequest = PutItemRequest.builder().tableName(tableName).item(addItem).build()
 
@@ -35,6 +36,7 @@ class DynamoStoreApplicationDAO (config: Config) : StoreApplicationDAO {
         addPackag["quantityCoins"] = AttributeValue.builder().n(packag.quantityCoins.toString()).build()
         addPackag["quantityGems"] = AttributeValue.builder().n(packag.quantityGems.toString()).build()
         addPackag["price"] = AttributeValue.builder().n(packag.price.toString()).build()
+        addPackag["location"] = AttributeValue.builder().s(packag.location).build()
         addPackag["createdAt"] = AttributeValue.builder().s(packag.createdAt.toString()).build()
         val putItemRequest = PutItemRequest.builder().tableName(tableName).item(addPackag).build()
         dynamoDbClient.build().putItem(putItemRequest)
@@ -61,6 +63,7 @@ class DynamoStoreApplicationDAO (config: Config) : StoreApplicationDAO {
             item = this["item"]?.s().toString(),
             coins = this["coins"]?.n()?.toInt(),
             gems = this["gems"]?.n()?.toInt(),
+            location = this["location"]?.s().toString(),
             createdAt = Instant.parse(this["createdAt"]?.s().toString())
         )
     }
@@ -85,6 +88,7 @@ class DynamoStoreApplicationDAO (config: Config) : StoreApplicationDAO {
             quantityCoins = this["quantityCoins"]?.n()?.toInt(),
             quantityGems = this["quantityGems"]?.n()?.toInt(),
             price = this["price"]?.n()?.toDouble(),
+            location = this["location"]?.s().toString(),
             createdAt = Instant.parse(this["createdAt"]?.s().toString())
         )
     }

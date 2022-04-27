@@ -1,5 +1,6 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm'
+    id "org.flywaydb.flyway" version "$flywayVersion"
 }
 
 group 'com.example'
@@ -16,13 +17,23 @@ dependencies {
     api "software.amazon.awssdk:netty-nio-client:$awsSDK2Version"
     api "io.ktor:ktor-auth:$ktor_version"
     implementation "io.ktor:ktor-jackson:$ktor_version"
+
     implementation project(":emile")
     implementation project(":emile-dynamoDB")
+    implementation project(":emile-postgresql")
+
     implementation 'org.testng:testng:7.1.0'
     implementation("io.ktor:ktor-serialization:$ktor_version")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
     implementation("com.fasterxml.jackson.module:jackson-module-afterburner:2.13.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:2.4.1")
-    implementation "io.vavr:vavr:$vavrVersion"
+    implementation('com.fasterxml.jackson.module:jackson-module-parameter-names:2.13.2')
+    implementation "io.vavr:vavr:0.10.4"
+    implementation "ch.qos.logback:logback-classic:1.2.5"
+
+    implementation 'org.flywaydb:flyway-core:8.5.4'
+    implementation 'org.jetbrains.exposed:exposed:0.17.14'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    implementation 'org.postgresql:postgresql:42.3.3'
+    implementation "io.github.cdimascio:dotenv-kotlin:6.2.2"
 }

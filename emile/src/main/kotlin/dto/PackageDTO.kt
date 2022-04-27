@@ -3,5 +3,6 @@ package dto
 data class PackageDTO(
     val quantityCoins : Int?,
     val quantityGems : Int?,
-    val price : Double
+    val price : Double,
+    val location : String,
 )

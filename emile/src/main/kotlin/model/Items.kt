@@ -7,5 +7,6 @@ data class Items (
     val item: String,
     val coins: Int?,
     val gems: Int?,
+    val location : String,
     val createdAt: Instant
     )

@@ -2,8 +2,8 @@ rootProject.name = 'Onboarding-emile'
 String[] modules = [
         "emile-api",
         "emile",
-        "emile-dynamoDB"
+        "emile-dynamoDB",
+        "emile-postgresql"
 ]
 include(modules)
-include 'emile-postgresql'
 

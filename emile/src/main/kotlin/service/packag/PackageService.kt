@@ -9,12 +9,16 @@ import java.util.*
 class PackageService(private val packageDAO : StoreApplicationDAO) {
 
     suspend fun create(packageRequest : PackageDTO){
+        if(packageRequest.quantityCoins!! < 0 && packageRequest.quantityGems!! < 0) {
+            throw java.lang.Exception( "Coins and gems needs bigger than 0")
+        }
         val id = UUID.randomUUID().toString()
         val packagCreate = Packag(
             itemId = id,
             quantityCoins = packageRequest.quantityCoins,
             quantityGems = packageRequest.quantityGems,
             price = packageRequest.price,
+            location = packageRequest.location,
             createdAt = Instant.now()
         )
         this.packageDAO.createPackage(packagCreate)

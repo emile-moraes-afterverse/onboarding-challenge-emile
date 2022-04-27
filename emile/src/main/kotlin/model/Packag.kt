@@ -7,5 +7,6 @@ data class Packag (
     val quantityCoins: Int?,
     val quantityGems: Int?,
     val price: Double?,
+    val location : String,
     val createdAt: Instant
     )
